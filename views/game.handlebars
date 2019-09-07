@@ -1,0 +1,27 @@
+<!-- Guess Page -->
+{{#if post}}
+    {{p1name}} guessed {{p1guess}} ({{p1perc}}%).<br>
+    {{p2name}} guessed {{p2guess}} ({{p2perc}}%).<br>
+    The population of {{country}} was actually {{population}}.<br>
+    {{winningUser}} is the winner.<br>
+    {{#unless lastround}}
+    <a href="/game">Next round</a>
+    {{/unless}}
+{{/if}}
+{{#if lastround}}
+    <a href="/results">Results</a>
+{{/if}}
+
+<!-- Results Page -->
+{{#unless post}}
+    <h1>Guess the population of {{country}}</h1>
+    <h3>{{round}}</h3>
+
+    <form action="/game" method="post">
+        <h2 class="p1">{{p1name}}</h2>
+        <input type="text" name="p1guess" class="p1"><br>
+        <h2 class="p2">{{p2name}}</h2>
+        <input type="text" name="p2guess" class="p2"><br>
+        <button type="submit" class="p2">Submit</button>
+    </form>
+{{/unless}}
