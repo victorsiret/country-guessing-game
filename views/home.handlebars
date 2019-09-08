@@ -1,18 +1,79 @@
-{{#if post}}
-Alright {{p1name}} and {{p2name}}, click PLAY NOw!!!!1111 to start.<br>
-<a href="/game">PLAY NOw!!!!1111</a>
-{{/if}}
 
-{{#unless post}}
-<h1>Play now!!!</h1>
+  <head>
+    <title>World Class Drinker</title>
+    <script src="/js/style.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="css/cover.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bitter|Montserrat|&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
+  </head>
 
-<h1>enTer your HaXX000\rS names</h1>
+  <body class="text-center">
+      <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+
+
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">World Class Drinker</h1>
+      <p class="">The number one source of fine inebriation entertainment for droughty cosmopolites in the need of refreshment.</p>
+    </main>
+
 
 <form action="/" method="post">
-    <h2 class="">Player 1 Name</h2>
-    <input type="text" name="p1name" class=""><br>
-    <h2 class="">Player 2 Name</h2>
-    <input type="text" name="p2name" class=""><br>
-    <button type="submit" class="">Submit</button>
-</form>
-{{/unless}}
+
+<div class="players row mx-auto">
+  <div class="col">
+    <div class="card mx-auto">
+      <div class="card-header">
+        {{#if post}}{{p1name}}{{/if}}{{#unless post}}Player 1{{/unless}}
+      </div>
+      <div class="card-body">
+        {{#if post}}
+        <p class="card-text">{{p1name}}, ready to play.</p>
+        {{/if}}
+
+        {{#unless post}}
+        <p class="card-text">What's your name player one?</p>
+        <p><input type="text" name="p1name" class=""></p>
+        {{/unless}}
+      </div>
+    </div>
+  </div>
+
+
+<div class="col">
+  <div class="card mx-auto">
+    <div class="card-header">
+      {{#if post}}{{p2name}}{{/if}}{{#unless post}}Player 2{{/unless}}
+    </div>
+    <div class="card-body">
+      {{#if post}}
+      <p class="card-text">{{p2name}}, ready to play.</p>
+      {{/if}}
+
+      {{#unless post}}
+      <p class="card-text">What's your name player two?</p>
+      <p><input type="text" name="p2name" class=""></p>
+      {{/unless}}
+    </div>
+  </div>
+</div>
+
+
+<div class="col">
+    <div class="cockpit mx-auto">
+      <div class="btn-group-vertical my-auto">
+        <a href="#" class="btn btn-success"><span class="cui-library-add"></span> Add player</a>
+        {{#if post}}
+        <a href="/game" class="btn btn-primary"><span class="cui-drink-alcohol"></span> Go somewhere</a>
+        {{/if}}
+
+        {{#unless post}}
+          <button type="submit" class="btn btn-info"><span class="cui-paperclip"></span> Register Players</button>
+        {{/unless}}
+      </div>
+    </div>
+    </div>
+
+    </form>
