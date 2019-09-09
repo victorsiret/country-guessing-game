@@ -16,9 +16,11 @@ function addPlayer() {
     if (players < 8) {
         players ++;
         id = "player" + players;
+        id2 = "p" + players;
 
         //Show the next player
         document.getElementById(id).style.display = "inline";
+        document.getElementById(id2).required = true;
 
         //Set hidden form element to new number of players for Node server
         document.getElementById("players").value = players;
