@@ -1,21 +1,26 @@
-  <head>
-    <title>World Class Drinker</title>
-    <script src="/js/style.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="css/cover.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Bitter|Montserrat|&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
-  </head>
+<head>
+  <title>World Class Drinker</title>
+  <script src="/js/style.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="css/cover.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bitter|Montserrat|&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
+</head>
 
-  <body class="text-center">
-      <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<body class="text-center">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
-
-
-<!-- Results Page -->
+  <!-- Results Page -->
 
 
-<h1>{{finalWinner}} is the winner!!!111</h1>
-<h2>{{p1name}} guessed {{p1wins}} countries' populations better and {{p2name}} guessed {{p2wins}} better.</h2>
-<h2>{{p1name}}'s estimate for the world population is {{p1sum}} and {{p2name}}'s is {{p2sum}}, compared to an actual {{totalpop}} people.</h2>
+  <h1>{{finalWinner}} is the winner!!!111</h1>
+
+  {{#pData}}
+    <h2>{{this.name}} guessed {{this.wins}} countries' populations better than the rest. The sum of their given populations is {{this.sum}}.</h2>
+  {{/pData}}
+
+  <h2>The world population is actually {{totalpop}} people.</h2>
+
+  </div>
+</body>

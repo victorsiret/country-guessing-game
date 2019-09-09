@@ -1,16 +1,15 @@
 
-  <head>
-    <title>World Class Drinker</title>
-    <script src="/js/style.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="css/cover.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Bitter|Montserrat|&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
-  </head>
+<head>
+  <title>World Class Drinker</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="css/cover.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bitter|Montserrat|&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
+</head>
 
-  <body class="text-center">
-      <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<body class="text-center">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
 
 
@@ -20,60 +19,180 @@
     </main>
 
 
-<form action="/" method="post">
+    <form action="/" method="post">
 
-<div class="players row mx-auto">
-  <div class="col">
-    <div class="card mx-auto">
-      <div class="card-header">
-        {{#if post}}{{p1name}}{{/if}}{{#unless post}}Player 1{{/unless}}
-      </div>
-      <div class="card-body">
-        {{#if post}}
-        <p class="card-text">{{p1name}}, ready to play.</p>
-        {{/if}}
+    
+    <div class="players row mx-auto">
 
-        {{#unless post}}
-        <p class="card-text">What's your name player one?</p>
-        <p><input type="text" name="p1name" class=""></p>
-        {{/unless}}
-      </div>
-    </div>
-  </div>
-
-
-<div class="col">
-  <div class="card mx-auto">
-    <div class="card-header">
-      {{#if post}}{{p2name}}{{/if}}{{#unless post}}Player 2{{/unless}}
-    </div>
-    <div class="card-body">
       {{#if post}}
-      <p class="card-text">{{p2name}}, ready to play.</p>
+      {{#pData}}
+      <div class="col">
+        <div class="card mx-auto">
+          <div class="card-header">
+            {{this.name}}
+          </div>
+          <div class="card-body">
+            <p class="card-text">Ready, {{this.name}}?</p>
+          </div>
+        </div>
+      </div>
+      {{/pData}}
       {{/if}}
 
+      <!-- Player 1: P1 and P2 on display in base game, second page done by #if post above according to name array -->
       {{#unless post}}
-      <p class="card-text">What's your name player two?</p>
-      <p><input type="text" name="p2name" class=""></p>
-      {{/unless}}
-    </div>
-  </div>
-</div>
+      <div class="col">
+        <div class="card mx-auto">
+          <div class="card-header">
+            Player 1
+          </div>
+          <div class="card-body">
+            <p class="card-text">What's your name player one?</p>
+            <p><input type="text" name="p0name" class=""></p>
+          </div>
+        </div>
+      </div>
 
-
-<div class="col">
-    <div class="cockpit mx-auto">
-      <div class="btn-group-vertical my-auto">
-        <a href="#" class="btn btn-success"><span class="cui-library-add"></span> Add player</a>
-        {{#if post}}
-        <a href="/game" class="btn btn-primary"><span class="cui-drink-alcohol"></span> Go somewhere</a>
-        {{/if}}
-
-        {{#unless post}}
-          <button type="submit" class="btn btn-info"><span class="cui-paperclip"></span> Register Players</button>
-        {{/unless}}
+    <!-- Player 2 -->
+    <div class="col">
+      <div class="card mx-auto">
+        <div class="card-header">
+          Player 2
+        </div>
+        <div class="card-body">
+          <p class="card-text">What's your name player two?</p>
+          <p><input type="text" name="p1name" class=""></p>
+        </div>
       </div>
     </div>
+    {{/unless}}
+
+    <!-- Player 3: Hidden -->
+    <div class="col" id="player3" style="display:none;">
+      <div class="card mx-auto">
+        <div class="card-header">
+          {{#unless post}}Player 3{{/unless}}
+        </div>
+        <div class="card-body">
+          {{#unless post}}
+          <p class="card-text">What's your name player three?</p>
+          <p><input type="text" name="p2name" class=""></p>
+          {{/unless}}
+        </div>
+      </div>
     </div>
 
+    <!-- Player 4: Hidden -->
+    <div class="col" id="player4" style="display:none;">
+      <div class="card mx-auto">
+        <div class="card-header">
+          {{#unless post}}Player 4{{/unless}}
+        </div>
+        <div class="card-body">
+          {{#unless post}}
+          <p class="card-text">What's your name player four?</p>
+          <p><input type="text" name="p3name" class=""></p>
+          {{/unless}}
+        </div>
+      </div>
+    </div>
+
+    <!-- Player 5: Hidden -->
+    <div class="col" id="player5" style="display:none;">
+      <div class="card mx-auto">
+        <div class="card-header">
+          {{#unless post}}Player 5{{/unless}}
+        </div>
+        <div class="card-body">
+          {{#unless post}}
+          <p class="card-text">What's your name player five?</p>
+          <p><input type="text" name="p4name" class=""></p>
+          {{/unless}}
+        </div>
+      </div>
+    </div>
+
+    <!-- Player 6: Hidden -->
+    <div class="col" id="player6" style="display:none;">
+      <div class="card mx-auto">
+        <div class="card-header">
+          {{#unless post}}Player 6{{/unless}}
+        </div>
+        <div class="card-body">
+          {{#unless post}}
+          <p class="card-text">What's your name player six?</p>
+          <p><input type="text" name="p5name" class=""></p>
+          {{/unless}}
+        </div>
+      </div>
+    </div>
+
+    <!-- Player 7: Hidden -->
+    <div class="col" id="player7" style="display:none;">
+      <div class="card mx-auto">
+        <div class="card-header">
+          {{#unless post}}Player 7{{/unless}}
+        </div>
+        <div class="card-body">
+          {{#unless post}}
+          <p class="card-text">What's your name player seven?</p>
+          <p><input type="text" name="p6name" class=""></p>
+          {{/unless}}
+        </div>
+      </div>
+    </div>
+
+    <!-- Player 8: Hidden -->
+    <div class="col" id="player8" style="display:none;">
+      <div class="card mx-auto">
+        <div class="card-header">
+          {{#unless post}}Player 8{{/unless}}
+        </div>
+        <div class="card-body">
+          {{#unless post}}
+          <p class="card-text">What's your name player eight?</p>
+          <p><input type="text" name="p7name" class=""></p>
+          {{/unless}}
+        </div>
+      </div>
+    </div>
+
+    <!-- Players Counter -->
+    <input type="text" name="players" id="players" style="display:none;">
+
+    <!-- Buttons -->
+    <div class="col">
+        <div class="cockpit mx-auto">
+          <div class="btn-group-vertical my-auto">
+            <!-- Add Players -->
+            {{#unless post}}
+            <a href="#" class="btn btn-success" onclick="addPlayer()" id="addButton"><span class="cui-library-add"></span> Add player</a>
+            {{/unless}}
+
+            <!-- Remove Players -->
+            {{#unless post}}
+            <a href="#" class="btn btn-danger" onclick="removePlayer()" id="removeButton" style="display:none;"><span class="cui-delete"></span> Remove player</a>
+            {{/unless}}
+
+            <!-- Start Game -->
+            {{#if post}}
+            <a href="/game" class="btn btn-primary"><span class="cui-drink-alcohol"></span> Go somewhere</a>
+            {{/if}}
+
+            <!-- Register Players -->
+            {{#unless post}}
+              <button type="submit" class="btn btn-info"><span class="cui-paperclip"></span> Register Players</button>
+            {{/unless}}
+          </div>
+        </div>
+        </div>
+
     </form>
+
+  </div>
+
+
+</body>
+
+<!-- Add Players Script -->
+<script src="/js/addPlayers.js"></script>

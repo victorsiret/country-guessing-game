@@ -1,1 +1,0 @@
-document.getElementsByClassName("p2").style.visibility = "hidden";

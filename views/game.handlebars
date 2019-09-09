@@ -1,116 +1,92 @@
-  <head>
-    <title>World Class Drinker</title>
-    <script src="/js/style.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="css/cover.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Bitter|Montserrat|&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
-  </head>
+<head>
+  <title>World Class Drinker</title>
+  <script src="/js/style.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="css/cover.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bitter|Montserrat|&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
+</head>
 
-  <body class="text-center">
-      <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<body class="text-center">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
-    <main role="main" class="inner headdy">
-      <p class="brand">World Class Drinker</p>
-    </main>
+      <!-- Banner -->
+      <main role="main" class="inner headdy">
+        <p class="brand">World Class Drinker</p>
+      </main>
 
 
-
-<div class="players row mx-auto">
-  <div class="col-sm-4">
-    <div class="card mx-auto border-info">
-      <div class="card-header text-white bg-info">
-        Round {{previousRound}}: Results
-      </div>
-      <div class="card-body">
-      <p class="card-text">The population of <strong>{{country}}</strong> is {{population}}</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-4">
-    <div class="card mx-auto border-{{drinksp1}}">
-      <div class="card-header text-white bg-{{drinksp1}}">
-        {{p1name}}
-      </div>
-      <div class="card-body">
-        <div class="progress">
-          <div class="progress-bar bg-{{drinksp1}}" role="progressbar" style="width: {{p1perc}}%" aria-valuenow="{{p1perc}}" aria-valuemin="0" aria-valuemax="100">{{p1guess}} ({{p1perc}})</div>
+      <!-- Results -->
+      <div class="players row mx-auto">
+        {{#if post}}
+        <div class="col-sm-4">
+          <div class="card mx-auto border-info">
+            <div class="card-header text-white bg-info">
+              Round {{previousRound}}: Results
+            </div>
+            <div class="card-body">
+            <p class="card-text">The population of <strong>{{country}}</strong> is {{population}}</p>
+            </div>
+          </div>
         </div>
+
+        <!-- Players -->
+        {{#pData}}
+        <div class="col-sm-4">
+          <div class="card mx-auto border-{{this.drinks}}">
+            <div class="card-header text-white bg-{{this.drinks}}">
+              {{this.name}}
+            </div>
+            <div class="card-body">
+              <div class="progress">
+                <div class="progress-bar bg-{{this.drinks}}" role="progressbar" style="width: {{this.percentage}}%" aria-valuenow="{{this.percentage}}" aria-valuemin="0" aria-valuemax="100">{{this.guess}} ({{this.percentage}})</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/pData}}
+
       </div>
+      {{/if}}
+
+
+      <!-- Answers -->
+      <form action="/game" method="post">
+        <main role="main" class="inner  gameactive">
+          <h2>Round {{nextRound}}: What's the population of <strong>{{nextCountry}}</strong>?</h2>
+
+        </main>
+
+        <div class="players row mx-auto">
+
+          {{#pData}}
+          <div class="col">
+            <div class="card mx-auto">
+              <div class="card-header">
+                {{this.name}}
+              </div>
+              <div class="card-body">
+                <p class="card-text">Enter your guess</p>
+                <input type="text" name="p{{@index}}guess" class="p{{@index}}"><br>
+              </div>
+            </div>
+          </div>
+          {{/pData}}
+
+        </div>
+
+        <!-- Submit -->
+        <div class="mx-auto">
+          {{#unless lastround}}
+          <button type="submit" class="p2 btn btn-primary submit"><span class="cui-paper-plane"></span> Submit</button>
+          {{/unless}}
+          {{#if lastround}}
+              <a href="/results" class="btn btn-success"><span class="cui-featured-playlist"></span> Results</a>
+          {{/if}}
+        </div>
+
+      </form>
     </div>
-  </div>
 
-
-<div class="col-sm-4">
-  <div class="card mx-auto border-{{drinksp2}}">
-    <div class="card-header text-white bg-{{drinksp2}}">
-      <span class="cui-drink-alcohol"></span>
-      {{p2name}}
-    </div>
-    <div class="card-body">
-      <div class="progress">
-        <div class="progress-bar bg-{{drinksp2}}" role="progressbar" style="width: {{p2perc}}%" aria-valuenow="{{p2perc}}" aria-valuemin="0" aria-valuemax="100">{{p2guess}} ({{p2perc}})</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-</div>
-
-
-
-<form action="/game" method="post">
-<main role="main" class="inner  gameactive">
-  <h2>Round {{nextRound}}: What's the population of <strong>{{nextCountry}}</strong>?</h2>
-
-</main>
-
-
-
-
-<div class="players row mx-auto">
-
-  <div class="col">
-    <div class="card mx-auto">
-      <div class="card-header">
-        {{p1name}}
-      </div>
-      <div class="card-body">
-        <p class="card-text">Enter your guess</p>
-        <input type="text" name="p1guess" class="p1"><br>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col">
-    <div class="card mx-auto">
-      <div class="card-header">
-        {{p2name}}
-      </div>
-      <div class="card-body">
-        <p class="card-text">Enter your guess</p>
-        <input type="text" name="p2guess" class="p2"><br>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-<div class="mx-auto">
-
-  {{#unless lastround}}
-  <button type="submit" class="p2 btn btn-primary submit"><span class="cui-paper-plane"></span> Submit</button>
-  {{/unless}}
-  {{#if lastround}}
-      <a href="/results" class="btn btn-success"><span class="cui-featured-playlist"></span> Results</a>
-  {{/if}}
-
-
-</div>
-</form>
+</body>
