@@ -39,126 +39,29 @@
       {{/pData}}
       {{/if}}
 
-      <!-- Player 1: P1 and P2 on display in base game, second page done by #if post above according to name array -->
+      <!-- Player Boxes Loop -->
       {{#unless post}}
-      <div class="col">
+      {{#playerBox}}
+      <div class="col" id="{{this.id}}" style="{{this.style}}">
         <div class="card mx-auto">
           <div class="card-header">
-            Player 1
+            {{this.name}}
           </div>
           <div class="card-body">
-            <p class="card-text">What's your name player one?</p>
-            <p><input type="text" name="p0name" class="" required></p>
+            <p class="card-text">What's your name {{this.name}}?</p>
+            <p><input type="text" name="{{this.formName}}" class="" id="{{this.id2}}" {{this.req}}></p>
           </div>
         </div>
       </div>
-
-    <!-- Player 2 -->
-    <div class="col">
-      <div class="card mx-auto">
-        <div class="card-header">
-          Player 2
-        </div>
-        <div class="card-body">
-          <p class="card-text">What's your name player two?</p>
-          <p><input type="text" name="p1name" class="" required></p>
-        </div>
-      </div>
-    </div>
-    {{/unless}}
-
-    <!-- Player 3: Hidden -->
-    <div class="col" id="player3" style="display:none;">
-      <div class="card mx-auto">
-        <div class="card-header">
-          {{#unless post}}Player 3{{/unless}}
-        </div>
-        <div class="card-body">
-          {{#unless post}}
-          <p class="card-text">What's your name player three?</p>
-          <p><input type="text" name="p2name" id="p3"></p>
-          {{/unless}}
-        </div>
-      </div>
-    </div>
-
-    <!-- Player 4: Hidden -->
-    <div class="col" id="player4" style="display:none;">
-      <div class="card mx-auto">
-        <div class="card-header">
-          {{#unless post}}Player 4{{/unless}}
-        </div>
-        <div class="card-body">
-          {{#unless post}}
-          <p class="card-text">What's your name player four?</p>
-          <p><input type="text" name="p3name" id="p4"></p>
-          {{/unless}}
-        </div>
-      </div>
-    </div>
-
-    <!-- Player 5: Hidden -->
-    <div class="col" id="player5" style="display:none;">
-      <div class="card mx-auto">
-        <div class="card-header">
-          {{#unless post}}Player 5{{/unless}}
-        </div>
-        <div class="card-body">
-          {{#unless post}}
-          <p class="card-text">What's your name player five?</p>
-          <p><input type="text" name="p4name" class=""></p>
-          {{/unless}}
-        </div>
-      </div>
-    </div>
-
-    <!-- Player 6: Hidden -->
-    <div class="col" id="player6" style="display:none;">
-      <div class="card mx-auto">
-        <div class="card-header">
-          {{#unless post}}Player 6{{/unless}}
-        </div>
-        <div class="card-body">
-          {{#unless post}}
-          <p class="card-text">What's your name player six?</p>
-          <p><input type="text" name="p5name" class=""></p>
-          {{/unless}}
-        </div>
-      </div>
-    </div>
-
-    <!-- Player 7: Hidden -->
-    <div class="col" id="player7" style="display:none;">
-      <div class="card mx-auto">
-        <div class="card-header">
-          {{#unless post}}Player 7{{/unless}}
-        </div>
-        <div class="card-body">
-          {{#unless post}}
-          <p class="card-text">What's your name player seven?</p>
-          <p><input type="text" name="p6name" class=""></p>
-          {{/unless}}
-        </div>
-      </div>
-    </div>
-
-    <!-- Player 8: Hidden -->
-    <div class="col" id="player8" style="display:none;">
-      <div class="card mx-auto">
-        <div class="card-header">
-          {{#unless post}}Player 8{{/unless}}
-        </div>
-        <div class="card-body">
-          {{#unless post}}
-          <p class="card-text">What's your name player eight?</p>
-          <p><input type="text" name="p7name" class=""></p>
-          {{/unless}}
-        </div>
-      </div>
-    </div>
+      {{/playerBox}}
+      {{/unless}}
 
     <!-- Players Counter -->
     <input type="text" name="players" id="players" style="display:none;">
+
+  </div>
+
+  
 
     <!-- Buttons -->
     <div class="col">
@@ -188,8 +91,6 @@
         </div>
 
     </form>
-
-  </div>
 
 
 </body>

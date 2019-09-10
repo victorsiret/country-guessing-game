@@ -18,8 +18,11 @@ const fs = require('fs');
 //VARIABLES
 //Data
 //Load Arrays
+const playerBox = require('./client/json/playerBox.json');
 const countries = require('./client/json/countries.json');
 const real = require('./client/json/population.json');
+
+//Shuffling countries concept
 let nums = [1,
     2,
     3,
@@ -242,10 +245,10 @@ const totalpop = arrSum(real);
 //Loops
 let i;
 
-//Player data matrix
+//Create player data matrix
 let pData = [];
 
-//Save results
+//Create data object to collect data
 let data = [];
 
 let winningUser = "";
@@ -277,7 +280,7 @@ app.use(bodyParser.json())
             pData = [];
 
             //Render Page
-            res.render('home', {});
+            res.render('home', {playerBox: playerBox});
         });
 
         //Post

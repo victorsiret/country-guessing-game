@@ -1,0 +1,66 @@
+[
+    {
+        "name"    : "Player 1",
+        "formName": "p0name",
+        "req"     : "required",
+        "style"   : "",
+        "id"      : "",
+        "id2"     : ""
+    },
+    {
+        "name"    : "Player 2",
+        "formName": "p1name",
+        "req"     : "required",
+        "style"   : "",
+        "id"      : "",
+        "id2"     : ""
+    },
+    {
+        "name"    : "Player 3",
+        "formName": "p2name",
+        "req"     : "",
+        "style"   : "display:none;",
+        "id"      : "player3",
+        "id2"     : "p3"
+    },
+    {
+        "name"    : "Player 4",
+        "formName": "p3name",
+        "req"     : "",
+        "style"   : "display:none;",
+        "id"      : "player4",
+        "id2"     : "p4"
+    },
+    {
+        "name"    : "Player 5",
+        "formName": "p4name",
+        "req"     : "",
+        "style"   : "display:none;",
+        "id"      : "player5",
+        "id2"     : "p5"
+    },
+    {
+        "name"    : "Player 6",
+        "formName": "p5name",
+        "req"     : "",
+        "style"   : "display:none;",
+        "id"      : "player6",
+        "id2"     : "p6"
+    },
+    {
+        "name"    : "Player 7",
+        "formName": "p6name",
+        "req"     : "",
+        "style"   : "display:none;",
+        "id"      : "player7",
+        "id2"     : "p7"
+    },
+    {
+        "name"    : "Player 8",
+        "formName": "p7name",
+        "req"     : "",
+        "style"   : "display:none;",
+        "id"      : "player8",
+        "id2"     : "p8"
+    }
+]
