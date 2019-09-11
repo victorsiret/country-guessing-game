@@ -56,12 +56,26 @@
       {{/playerBox}}
       {{/unless}}
 
-    <!-- Players Counter -->
-    <input type="text" name="players" id="players" style="display:none;">
+      <!-- Players Counter -->
+      <input type="text" name="players" id="players" style="display:none;">
 
-  </div>
+    </div>
 
-  
+    <div class="col" id="{{this.id}}" style="{{this.style}}">
+      <div class="card mx-auto">
+        <div class="card-header">
+          Game Mode
+        </div>
+        <div class="card-body">
+          <p class="card-text">Select a game mode</p>
+            <select class="form-control">
+              {{#each gameModes}}
+                <option>{{this}}</option>
+              {{/each}}
+            </select>
+        </div>
+      </div>
+    </div>
 
     <!-- Buttons -->
     <div class="col">
@@ -88,7 +102,7 @@
             {{/unless}}
           </div>
         </div>
-        </div>
+      </div>
 
     </form>
 

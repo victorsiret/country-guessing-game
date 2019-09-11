@@ -17,10 +17,16 @@ const fs = require('fs');
 //___________________________________________________________________________
 //VARIABLES
 //Data
-//Load Arrays
+//Utility Arrays
 const playerBox = require('./client/json/playerBox.json');
+const gameModes = require('./client/json/gameModes.json');
+
+//Country Data
 const countries = require('./client/json/countries.json');
-const real = require('./client/json/population.json');
+const population = require('./client/json/population.json');
+const landmass = require('./client/json/landmass.json');
+const density = require('./client/json/density.json');
+const capitals = require('./client/json/capitals.json');
 
 //Shuffling countries concept
 let nums = [1,
@@ -240,7 +246,7 @@ let nums = [1,
 let round = -1;
 const rounds = countries.length;
 let lastround = false;
-const totalpop = arrSum(real);
+const totalpop = arrSum(population);
 
 //Loops
 let i;
@@ -280,7 +286,7 @@ app.use(bodyParser.json())
             pData = [];
 
             //Render Page
-            res.render('home', {playerBox: playerBox});
+            res.render('home', {playerBox: playerBox, gameModes: gameModes});
         });
 
         //Post
@@ -312,15 +318,15 @@ app.use(bodyParser.json())
         //Get guesses and run calculations
         for (i = 0; i < players; i++) {
             pData[i]["guess"] = Number(req.body["p" + i + "guess"]);
-            pData[i]["percentage"] = Math.round(100 * pData[i]["guess"] / real[round]);
+            pData[i]["percentage"] = Math.round(100 * pData[i]["guess"] / population[round]);
         }
 
         //Determine round winner(s)
         let roundData = [];
             //Calculate each absolute difference
             for (i = 0; i < players; i++) {
-                pData[i]["abs"] = Math.abs(pData[i]["guess"] - real[round]);
-                roundData[i] = Math.abs(pData[i]["guess"] - real[round]);
+                pData[i]["abs"] = Math.abs(pData[i]["guess"] - population[round]);
+                roundData[i] = Math.abs(pData[i]["guess"] - population[round]);
                 pData[i]["sum"] += pData[i]["guess"];
                 }
             //Find minimum absolute difference
@@ -343,7 +349,7 @@ app.use(bodyParser.json())
         round = round + 1
 
         //Render Page
-        res.render('game', {post:true, pData: pData, country: countries[round-1], nextCountry: countries[round], population: real[round-1], lastround: lastround, previousRound: round, nextRound: round + 1});
+        res.render('game', {post:true, pData: pData, country: countries[round-1], nextCountry: countries[round], population: population[round-1], lastround: lastround, previousRound: round, nextRound: round + 1});
     });
 
 //Results Page: Displays Game Results
